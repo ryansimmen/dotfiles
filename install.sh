@@ -3,7 +3,8 @@ git config --global user.email "ryansimmen@github.com"
 git config --global pager.branch false
 git config --global push.default current
 
-cp -r ~/dotfiles.github/.vim/colors ~/.vim/
+mkdir -p ~/.vim/colors
+cp ~/dotfiles.github/.vim/colors/molokai.vim ~/.vim/colors/
 ln -s ~/dotfiles.github/.zshrc ~/
 ln -s ~/dotfiles.github/.vimrc ~/
 
