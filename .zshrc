@@ -54,5 +54,6 @@ alias gap="cd ~/github/enterprise2 && git add . && git commit --amend --no-edit 
 export PATH=~/github/enterprise2:$PATH
 export DEV_MODE=1
 export GHE_LXC_NAME=ghe-dev-$(id -un)
+export FETCH_DOCKER_IMAGES=1
 cd ~/github/enterprise2
 
