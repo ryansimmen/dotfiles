@@ -55,5 +55,6 @@ export PATH=~/github/enterprise2:$PATH
 export DEV_MODE=1
 export GHE_LXC_NAME=ghe-dev-$(id -un)
 export FETCH_DOCKER_IMAGES=1
+export OVERLAY_VM_FILES=yes
 cd ~/github/enterprise2
 
