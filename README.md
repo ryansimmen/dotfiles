@@ -12,11 +12,11 @@ cd ~/github/enterprise2
 git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
 ```
 
-#### Clone dotfiles.github
+#### Clone dotfiles
 ```shell
 cd ~
-git clone git@github.com:ryansimmen/dotfiles.github
-dotfiles.github/install.sh
+git clone git@github.com:ryansimmen/dotfiles
+dotfiles/install.sh
 ```
 
 #### octofactory docker login
