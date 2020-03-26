@@ -46,15 +46,15 @@ bindkey '^[[1;5D' backward-word
 
 # Aliases
 alias cls=clear
-alias b="cd ~/github/enterprise2 && chroot-stop.sh && chroot-reset.sh && chroot-build.sh && chroot-start.sh && chroot-configure.sh"
-alias sshc="~/github/enterprise2/chroot-ssh.sh"
-alias gap="cd ~/github/enterprise2 && git add . && git commit --amend --no-edit && git push --force"
+alias b="cd ~/enterprise2 && chroot-stop.sh && chroot-reset.sh && chroot-build.sh && chroot-start.sh && chroot-configure.sh"
+alias sshc="~/enterprise2/chroot-ssh.sh"
+alias gap="cd ~/enterprise2 && git add . && git commit --amend --no-edit && git push --force"
 
 # enterprise2
-export PATH=~/github/enterprise2:$PATH
+export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
 export GHE_LXC_NAME=ghe-dev-$(id -un)
 export FETCH_DOCKER_IMAGES=1
 export OVERLAY_VM_FILES=yes
-cd ~/github/enterprise2
+cd ~/enterprise2
 
