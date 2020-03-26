@@ -4,9 +4,9 @@ git config --global pager.branch false
 git config --global push.default current
 
 mkdir -p ~/.vim/colors
-cp ~/dotfiles.github/.vim/colors/molokai.vim ~/.vim/colors/
-ln -s ~/dotfiles.github/.zshrc ~/
-ln -s ~/dotfiles.github/.vimrc ~/
+cp ~/dotfiles/.vim/colors/molokai.vim ~/.vim/colors/
+ln -s ~/dotfiles/.zshrc ~/
+ln -s ~/dotfiles/.vimrc ~/
 
 # vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
