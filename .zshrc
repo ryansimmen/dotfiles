@@ -46,15 +46,18 @@ bindkey '^[[1;5D' backward-word
 
 # Aliases
 alias cls=clear
-alias b="cd ~/enterprise2 && chroot-stop.sh && chroot-reset.sh && chroot-build.sh && chroot-start.sh && chroot-configure.sh"
-alias sshc="~/enterprise2/chroot-ssh.sh"
-alias gap="cd ~/enterprise2 && git add . && git commit --amend --no-edit && git push --force"
+alias src="cd ~/enterprise2;"
+alias sshc="src; chroot-ssh.sh"
+alias gap="src; git add . && git commit --amend --no-edit && git push --force"
+alias r="src; chroot-stop.sh; chroot-reset.sh; chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf;"
+alias b="src; r; chroot-build.sh && chroot-start.sh && chroot-configure.sh"
+alias bc="src; r; chroot-build.sh && chroot-cluster-start.sh test/cluster.conf"
 
 # enterprise2
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
-export GHE_LXC_NAME=ghe-dev-$(id -un)
+#export GHE_LXC_NAME=ghe-dev-$(id -un)
 export FETCH_DOCKER_IMAGES=1
-export OVERLAY_VM_FILES=yes
-cd ~/enterprise2
+#export OVERLAY_VM_FILES=yes
 
+src;
