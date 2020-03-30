@@ -56,8 +56,8 @@ alias bc="src; r; chroot-build.sh && chroot-cluster-start.sh test/cluster.conf"
 # enterprise2
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
-#export GHE_LXC_NAME=ghe-dev-$(id -un)
+export GHE_LXC_NAME=ghe-dev-$(id -un)
 export FETCH_DOCKER_IMAGES=1
-#export OVERLAY_VM_FILES=yes
+export OVERLAY_VM_FILES=yes
 
 src;
