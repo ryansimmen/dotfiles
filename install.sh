@@ -23,4 +23,4 @@ git checkout master
 git checkout origin/master pkg_files/github/db/schema.production.json.gz
 git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
 
-git branch --set-upstream origin/master
+git branch --set-upstream-to origin/master
