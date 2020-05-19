@@ -3,6 +3,13 @@ git config --global user.email "ryansimmen@github.com"
 git config --global pager.branch false
 git config --global push.default current
 
+cd ~/enterprise2
+git checkout master
+git reset --hard
+sleep 1
+git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
+git branch --set-upstream-to origin/master
+
 mkdir -p ~/.vim/colors
 cp ~/.dotfiles/.vim/colors/molokai.vim ~/.vim/colors/
 ln -s ~/.dotfiles/.zshrc ~/
@@ -17,10 +24,3 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
     sudo apt install -y zsh
     zsh
 fi;
-
-cd ~/enterprise2
-git checkout master
-git reset --hard
-sleep 1
-git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
-git branch --set-upstream-to origin/master
