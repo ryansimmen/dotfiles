@@ -19,7 +19,8 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
 fi;
 
 cd ~/enterprise2
+git checkout master
 git checkout origin/master pkg_files/github/db/schema.production.json.gz
 git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
 
-git --set-upstream origin/master
+git branch --set-upstream origin/master
