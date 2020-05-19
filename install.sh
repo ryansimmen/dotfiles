@@ -20,7 +20,7 @@ fi;
 
 cd ~/enterprise2
 git checkout master
-git checkout origin/master pkg_files/github/db/schema.production.json.gz
+git reset --hard
+sleep 1
 git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
-
 git branch --set-upstream-to origin/master
