@@ -17,3 +17,9 @@ if [ "$SHELL" != "/usr/bin/zsh" ]; then
     sudo apt install -y zsh
     zsh
 fi;
+
+cd ~/enterprise2
+git checkout origin/master pkg_files/github/db/schema.production.json.gz
+git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz
+
+git --set-upstream origin/master
