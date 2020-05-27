@@ -1,3 +1,6 @@
+#!/bin/bash
+#
+
 git config --global user.name "Ryan Simmen"
 git config --global user.email "ryansimmen@github.com"
 git config --global pager.branch false
