@@ -47,12 +47,16 @@ bindkey '^[[1;5D' backward-word
 # Aliases
 alias cls=clear
 alias src="cd ~/enterprise2;"
-alias sshc="src; chroot-ssh.sh"
-alias gap="src; git add . && git commit --amend --no-edit && git push --force"
 alias r="src; chroot-stop.sh; chroot-reset.sh; chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf;"
 alias b="src; r; chroot-build.sh && chroot-start.sh && chroot-configure.sh"
 alias bc="src; r; chroot-build.sh && chroot-cluster-start.sh test/cluster.conf"
+alias gap="src; git add . && git commit --amend --no-edit && git push --force"
 alias cip="chroot-cluster-ip.sh"
+alias sshc="chroot-ssh.sh"
+alias sshp="chroot-cluster-ssh.sh build-ha-primary"
+alias sshr="chroot-cluster-ssh.sh build-ha-replica"
+alias sshd="chroot-cluster-ssh.sh build-cluster-data"
+alias ssha="chroot-cluster-ssh.sh build-cluster-app"
 
 # enterprise2
 export PATH=~/enterprise2:$PATH
