@@ -52,7 +52,7 @@ alias gap="src; git add . && git commit --amend --no-edit && git push --force"
 alias r="src; chroot-stop.sh; chroot-reset.sh; chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf;"
 alias b="src; r; chroot-build.sh && chroot-start.sh && chroot-configure.sh"
 alias bc="src; r; chroot-build.sh && chroot-cluster-start.sh test/cluster.conf"
-alias cip="chroot-ip.sh"
+alias cip="chroot-cluster-ip.sh"
 
 # enterprise2
 export PATH=~/enterprise2:$PATH
