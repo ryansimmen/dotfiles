@@ -57,6 +57,7 @@ alias sshp="chroot-cluster-ssh.sh build-ha-primary"
 alias sshr="chroot-cluster-ssh.sh build-ha-replica"
 alias sshd="chroot-cluster-ssh.sh build-cluster-data"
 alias ssha="chroot-cluster-ssh.sh build-cluster-app"
+alias dockerclean="docker rm -f $(docker ps -aq); docker image prune -af"
 
 # enterprise2
 export PATH=~/enterprise2:$PATH
