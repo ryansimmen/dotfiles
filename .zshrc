@@ -73,7 +73,6 @@ alias dockerclean="docker system prune -a"
 # enterprise2
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
-#export GHE_LXC_NAME=ghe-dev-$(id -un)
 #export OVERLAY_VM_FILES=no
 
 src
