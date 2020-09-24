@@ -49,30 +49,33 @@ alias cls=clear
 alias src="cd ~/enterprise2"
 alias r="src; chroot-stop.sh; chroot-reset.sh; sudo ./chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf; chroot-cluster-reset.sh test/cluster-dr-lite.conf;"
 alias b="src; r; chroot-build.sh"
-alias d="src && chroot-start.sh && chroot-configure.sh"
+alias d="src; chroot-start.sh && chroot-configure.sh"
 alias bd="b && d"
-alias dc="src && chroot-cluster-start.sh test/cluster.conf"
+alias dc="src; chroot-cluster-start.sh test/cluster.conf"
 alias bdc="b && dc"
-alias dcha="src && chroot-cluster-start.sh test/cluster-ha.conf"
+alias dcha="src; chroot-cluster-start.sh test/cluster-ha.conf"
 alias bdcha="b && dcha"
-alias dcdr="src && chroot-cluster-start.sh test/cluster-dr.conf"
+alias dcdr="src; chroot-cluster-start.sh test/cluster-dr.conf"
 alias bdcdr="b && dcdr"
-alias dcdrl="src && chroot-cluster-start.sh test/cluster-dr-lite.conf"
+alias dcdrl="src; chroot-cluster-start.sh test/cluster-dr-lite.conf"
 alias bdcdrl="b && dcdrl"
-alias gap="src; git add . && git commit --amend --no-edit && git push --force"
+alias gap="git add . && git commit --amend --no-edit && git push --force"
 alias cip="chroot-cluster-ip.sh; chroot-ip.sh"
 alias sshc="chroot-ssh.sh"
 alias sshp="chroot-cluster-ssh.sh build-ha-primary"
 alias sshdrp="chroot-cluster-ssh.sh build-dr-primary-main"
 alias sshdrs="chroot-cluster-ssh.sh build-dr-secondary-main"
 alias sshr="chroot-cluster-ssh.sh build-ha-replica"
+alias sshr2="chroot-cluster-ssh.sh build-ha-replica2"
 alias sshd="chroot-cluster-ssh.sh build-cluster-data"
 alias ssha="chroot-cluster-ssh.sh build-cluster-app"
 alias dockerclean="docker system prune -a"
+alias sw="git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz; git update-index --skip-worktree pkg_files/github/seed.sql"
+alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.production.json.gz; git update-index --no-skip-worktree pkg_files/github/seed.sql"
 
 # enterprise2
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
 #export OVERLAY_VM_FILES=no
 
-src
+src;
