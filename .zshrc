@@ -77,5 +77,7 @@ alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.produc
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
 #export OVERLAY_VM_FILES=no
+export VISUAL=vim
+export EDITOR=vim
 
 src;
