@@ -3,8 +3,10 @@
 
 git config --global user.name "Ryan Simmen"
 git config --global user.email "ryansimmen@github.com"
+git config --global core.editor vim
 git config --global pager.branch false
 git config --global push.default current
+git config --global alias.lo  "log --pretty='format:%C(auto)%h %C(green)%an %C(auto)%s' -10"
 
 mkdir -p ~/.vim/colors
 cp ~/.dotfiles/.vim/colors/molokai.vim ~/.vim/colors/
