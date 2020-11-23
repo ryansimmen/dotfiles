@@ -49,15 +49,17 @@ alias cls=clear
 alias src="cd ~/enterprise2"
 alias r="src; chroot-stop.sh; chroot-reset.sh; sudo ./chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf; chroot-cluster-reset.sh test/cluster-dr-lite.conf;"
 alias b="src; r; chroot-build.sh"
-alias d="src; chroot-start.sh && chroot-configure.sh"
+alias d="src; env -u GITHUB_HOSTNAME chroot-start.sh && chroot-configure.sh"
 alias bd="b && d"
-alias dc="src; chroot-cluster-start.sh test/cluster.conf"
+alias dc="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster.conf"
 alias bdc="b && dc"
-alias dha="src; chroot-cluster-start.sh test/cluster-ha.conf"
+alias dha="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-ha.conf"
 alias bdha="b && dha"
-alias dcdr="src; chroot-cluster-start.sh test/cluster-dr.conf"
+alias dhaa="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-ha-active.conf"
+alias bdhaa="b && dhaa"
+alias dcdr="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-dr.conf"
 alias bdcdr="b && dcdr"
-alias dcdrl="src; chroot-cluster-start.sh test/cluster-dr-lite.conf"
+alias dcdrl="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-dr-lite.conf"
 alias bdcdrl="b && dcdrl"
 alias gap="git add . && git commit --amend --no-edit && git push --force"
 alias cip="chroot-cluster-ip.sh; chroot-ip.sh"
@@ -77,5 +79,8 @@ alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.produc
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
 #export OVERLAY_VM_FILES=no
+
+fpath=(~/.zsh $fpath)
+autoload -Uz compinit && compinit
 
 src;
