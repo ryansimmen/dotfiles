@@ -78,7 +78,7 @@ alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.produc
 # enterprise2
 export PATH=~/enterprise2:$PATH
 export DEV_MODE=1
-#export OVERLAY_VM_FILES=no
+export OVERLAY_VM_FILES=no
 
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
