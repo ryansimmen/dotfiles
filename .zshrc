@@ -84,3 +84,14 @@ fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
 src;
+
+cd ~/ghae-kube
+
+alias k="kubectl"
+alias gp="k get pod"
+alias dp="k describe pod"
+alias a="script/apply"
+alias d="k delete -R -f rendered"
+alias dpvc="k delete pvc --all"
+alias dpv="k delete pv --all"
+alias ddb="az mysql db delete -g ryansim -s azure-mysql-server-ryansim -n github_enterprise -y"
