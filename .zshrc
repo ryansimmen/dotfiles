@@ -38,6 +38,9 @@ zinit light knu/z
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
 
+zinit ice from"gh-r" as"program"
+zinit load derailed/k9s
+
 # Key Bindings
 [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
