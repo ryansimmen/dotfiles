@@ -76,6 +76,7 @@ alias sw="git update-index --skip-worktree pkg_files/github/db/schema.production
 alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.production.json.gz; git update-index --no-skip-worktree pkg_files/github/seed.sql"
 
 # enterprise2
+export PATH=~/enterprise2:$PATH
 eval "$(rbenv init -)"
 export DEV_MODE=1
 export OVERLAY_VM_FILES=no
