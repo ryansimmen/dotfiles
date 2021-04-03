@@ -77,7 +77,9 @@ alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.produc
 
 # enterprise2
 export PATH=~/enterprise2:$PATH
+export PATH=~/go/bin:$PATH
 eval "$(rbenv init -)"
+export GITHUB_HOSTNAME=$(hostname)
 export DEV_MODE=1
 export OVERLAY_VM_FILES=no
 
