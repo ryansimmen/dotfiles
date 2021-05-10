@@ -113,4 +113,3 @@ function pristine(){
   script/setup
 }
 
-export OLD_DEPLOYER=true
