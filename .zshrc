@@ -93,6 +93,7 @@ src;
 
 cd ~/ghae-kube
 
+export DEV_USER=ryansim7291
 
 alias k="kubectl"
 alias gp="k get pod"
@@ -102,8 +103,6 @@ alias dr="rm -rf rendered/ghae/charts/namespace/templates/ghae-namespace.yaml; k
 alias dpvc="k delete pvc --all"
 alias dpv="k delete pv --all"
 alias ddb="az mysql db delete -g $DEV_USER -s $(az group show -n $DEV_USER --query 'tags.unique_name' -o tsv) -n github_enterprise -y"
-
-export DEV_USER=ryansim7291
 
 function pristine(){
   ms_user=ryansim
