@@ -93,7 +93,6 @@ src;
 
 cd ~/ghae-kube
 
-export DEV_USER=ryansim17346
 
 alias k="kubectl"
 alias gp="k get pod"
@@ -104,13 +103,14 @@ alias dpvc="k delete pvc --all"
 alias dpv="k delete pv --all"
 alias ddb="az mysql db delete -g $DEV_USER -s $(az group show -n $DEV_USER --query 'tags.unique_name' -o tsv) -n github_enterprise -y"
 
+export DEV_USER=ryansim7291
+
 function pristine(){
+  ms_user=ryansim
   az group update -n "$DEV_USER" --set tags.auto_cleanup_date_utc='01/01/21@00:00:00'
-  ms_user=$(az ad signed-in-user show --query mailNickname --output tsv)
   sed --in-place --follow-symlink "s/export DEV_USER=$ms_user.*/export DEV_USER=$ms_user$RANDOM/g" ~/.zshrc;
   source ~/.zshrc
   cd ~/ghae-kube
   script/setup
 }
 
-export OLD_DEPLOYER=true
