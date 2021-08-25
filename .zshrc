@@ -91,25 +91,25 @@ autoload -Uz compinit && compinit
 
 src;
 
-cd ~/ghae-kube
+# cd ~/ghae-kube
 
-export DEV_USER=ryansim7291
+# export DEV_USER=ryansim7291
 
-alias k="kubectl"
-alias gp="k get pod"
-alias dp="k describe pod"
-alias a="script/apply"
-alias dr="rm -rf rendered/ghae/charts/namespace/templates/ghae-namespace.yaml; k delete -R -f rendered"
-alias dpvc="k delete pvc --all"
-alias dpv="k delete pv --all"
-alias ddb="az mysql db delete -g $DEV_USER -s $(az group show -n $DEV_USER --query 'tags.unique_name' -o tsv) -n github_enterprise -y"
+# alias k="kubectl"
+# alias gp="k get pod"
+# alias dp="k describe pod"
+# alias a="script/apply"
+# alias dr="rm -rf rendered/ghae/charts/namespace/templates/ghae-namespace.yaml; k delete -R -f rendered"
+# alias dpvc="k delete pvc --all"
+# alias dpv="k delete pv --all"
+# alias ddb="az mysql db delete -g $DEV_USER -s $(az group show -n $DEV_USER --query 'tags.unique_name' -o tsv) -n github_enterprise -y"
 
-function pristine(){
-  ms_user=ryansim
-  az group update -n "$DEV_USER" --set tags.auto_cleanup_date_utc='01/01/21@00:00:00'
-  sed --in-place --follow-symlink "s/export DEV_USER=$ms_user.*/export DEV_USER=$ms_user$RANDOM/g" ~/.zshrc;
-  source ~/.zshrc
-  cd ~/ghae-kube
-  script/setup
-}
+# function pristine(){
+#  ms_user=ryansim
+#   az group update -n "$DEV_USER" --set tags.auto_cleanup_date_utc='01/01/21@00:00:00'
+#   sed --in-place --follow-symlink "s/export DEV_USER=$ms_user.*/export DEV_USER=$ms_user$RANDOM/g" ~/.zshrc;
+#   source ~/.zshrc
+#   cd ~/ghae-kube
+#   script/setup
+# }
 
