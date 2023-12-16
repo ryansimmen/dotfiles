@@ -1,7 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-sensible'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
