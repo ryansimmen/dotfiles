@@ -1,20 +1,11 @@
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 ### End of Zinit installer's chunk
 
 # Plugins
-zinit ice silent pick"history.zsh"
-zinit snippet OMZ::lib/history.zsh
-
 zinit ice silent pick"completion.zsh"
 zinit snippet OMZ::lib/completion.zsh
 
@@ -24,22 +15,14 @@ zinit light zsh-users/zsh-completions
 zinit ice blockf
 zinit light greymd/docker-zsh-completion
 
-zinit snippet OMZ::plugins/extract/extract.plugin.zsh
-zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 zinit light zdharma/history-search-multi-word
-zinit light hcgraf/zsh-sudo
-zinit light bric3/nice-exit-code
-zinit light knu/z
 
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
-
-zinit ice from"gh-r" as"program"
-zinit load derailed/k9s
 
 # Key Bindings
 [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
@@ -47,69 +30,37 @@ zinit load derailed/k9s
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
+# Fix comments
+setopt interactivecomments
+
 # Aliases
 alias cls=clear
-alias src="cd ~/enterprise2"
-alias r="src; chroot-stop.sh; chroot-reset.sh; sudo ./chroot-cluster-stop.sh; chroot-cluster-reset.sh test/cluster.conf; chroot-cluster-reset.sh test/cluster-ha.conf; chroot-cluster-reset.sh test/cluster-dr.conf; chroot-cluster-reset.sh test/cluster-dr-lite.conf;"
-alias b="src; r; chroot-build.sh"
-alias d="src; env -u GITHUB_HOSTNAME chroot-start.sh && chroot-configure.sh"
-alias bd="b && d"
-alias dc="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster.conf"
-alias bdc="b && dc"
-alias dha="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-ha.conf"
-alias bdha="b && dha"
-alias dhaa="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-ha-active.conf"
-alias bdhaa="b && dhaa"
-alias dcdr="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-dr.conf"
-alias bdcdr="b && dcdr"
-alias dcdrl="src; env -u GITHUB_HOSTNAME chroot-cluster-start.sh test/cluster-dr-lite.conf"
-alias bdcdrl="b && dcdrl"
 alias gap="git add . && git commit --amend --no-edit && git push --force"
-alias cip="chroot-cluster-ip.sh; chroot-ip.sh"
-alias sshc="chroot-ssh.sh"
-alias sshp="chroot-cluster-ssh.sh build-ha-primary"
-alias sshdrp="chroot-cluster-ssh.sh build-dr-primary-main"
-alias sshdrs="chroot-cluster-ssh.sh build-dr-secondary-main"
-alias sshr="chroot-cluster-ssh.sh build-ha-replica"
-alias sshr2="chroot-cluster-ssh.sh build-ha-replica2"
-alias sshd="chroot-cluster-ssh.sh build-cluster-data"
-alias ssha="chroot-cluster-ssh.sh build-cluster-app"
 alias dockerclean="docker system prune -a"
-alias sw="git update-index --skip-worktree pkg_files/github/db/schema.production.json.gz; git update-index --skip-worktree pkg_files/github/seed.sql"
-alias nsw="git update-index --no-skip-worktree pkg_files/github/db/schema.production.json.gz; git update-index --no-skip-worktree pkg_files/github/seed.sql"
+alias k="kubectl"
+alias t="transmission-cli -u 0 -w ~/downloads"
 
-# enterprise2
-export PATH=~/enterprise2:$PATH
+
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/ryansimmen/go/bin
 eval "$(rbenv init -)"
-export GITHUB_HOSTNAME=$(hostname)
-export DEV_MODE=1
-export OVERLAY_VM_FILES=no
 
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
-src;
+# service docker status || sudo service docker start
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
 
-cd ~/ghae-kube
+source ~/token.sh
 
-export DEV_USER=ryansim7291
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-alias k="kubectl"
-alias gp="k get pod"
-alias dp="k describe pod"
-alias a="script/apply"
-alias dr="rm -rf rendered/ghae/charts/namespace/templates/ghae-namespace.yaml; k delete -R -f rendered"
-alias dpvc="k delete pvc --all"
-alias dpv="k delete pv --all"
-alias ddb="az mysql db delete -g $DEV_USER -s $(az group show -n $DEV_USER --query 'tags.unique_name' -o tsv) -n github_enterprise -y"
+export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
+export GOPRIVATE=
+export GONOPROXY=
+export GONOSUMDB='github.com/github/*'
 
-function pristine(){
-  ms_user=ryansim
-  az group update -n "$DEV_USER" --set tags.auto_cleanup_date_utc='01/01/21@00:00:00'
-  sed --in-place --follow-symlink "s/export DEV_USER=$ms_user.*/export DEV_USER=$ms_user$RANDOM/g" ~/.zshrc;
-  source ~/.zshrc
-  cd ~/ghae-kube
-  script/setup
-}
-
+export PATH=$HOME/.istioctl/bin:$PATH
