@@ -2,6 +2,6 @@
 
 ```shell
 cd ~
-git clone git@github.com:ryansimmen/dotfiles .dotfiles
+git clone https://github.com/ryansimmen/dotfiles.git .dotfiles
 .dotfiles/install.sh
 ```
