@@ -36,6 +36,12 @@ zinit light sindresorhus/pure
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt SHARE_HISTORY
+
 # Fix comments
 setopt interactivecomments
 
