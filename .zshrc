@@ -12,6 +12,9 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Plugins
+zinit ice silent pick"history.zsh"
+zinit snippet OMZ::lib/history.zsh
+
 zinit ice silent pick"completion.zsh"
 zinit snippet OMZ::lib/completion.zsh
 
@@ -35,12 +38,6 @@ zinit light sindresorhus/pure
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
-
-# History
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=1000
-setopt SHARE_HISTORY
 
 # Fix comments
 setopt interactivecomments
