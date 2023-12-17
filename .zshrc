@@ -1,37 +1,29 @@
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
+if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
+  print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
+  command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
+  command git clone -q --depth=1 --branch "main" https://github.com/z-shell/zi "$HOME/.zi/bin" && \
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+source "$HOME/.zi/bin/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
+# examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
+zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 # Plugins
-zinit ice silent pick"history.zsh"
-zinit snippet OMZ::lib/history.zsh
+zi ice silent pick"history.zsh"
+zi snippet OMZ::lib/history.zsh
 
-zinit ice silent pick"completion.zsh"
-zinit snippet OMZ::lib/completion.zsh
+zi wait lucid for \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    z-shell/F-Sy-H \
+    z-shell/H-S-MW \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
-zinit ice blockf
-zinit light zsh-users/zsh-completions
-
-zinit ice blockf
-zinit light greymd/docker-zsh-completion
-
-zinit snippet OMZ::plugins/command-not-found/command-not-found.plugin.zsh
-
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma/fast-syntax-highlighting
-zinit light zdharma/history-search-multi-word
-
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+zi ice pick"async.zsh" src"pure.zsh"
+zi light sindresorhus/pure
 
 # Key Bindings
 [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
