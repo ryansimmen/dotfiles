@@ -10,7 +10,6 @@ autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 
 # Plugins
-zi ice silent pick"history.zsh"
 zi snippet OMZ::lib/history.zsh
 
 zi light z-shell/F-Sy-H
