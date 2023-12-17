@@ -22,8 +22,9 @@ zi light z-shell/H-S-MW
 zi wait lucid for \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     z-shell/F-Sy-H \
-  has"kubectl" atinit"source <(kubectl completion zsh)" \
-    z-shell/null \
+  id-as"kubectl" has"kubectl" as"completion" \
+    atclone="kubectl completion zsh > _kubectl" \
+    atpull"%atclone" nocompile blockf z-shell/null \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
