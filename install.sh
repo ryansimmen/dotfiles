@@ -9,9 +9,6 @@ git config --global pager.branch false
 git config --global push.default current
 git config --global alias.lo  "log --pretty='format:%C(auto)%h %C(green)%an %C(auto)%s' -10"
 
-# git completion
-curl -fLo ~/.zsh/git-completion.zsh --create-dirs https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
-
 # vim colors
 mkdir -p ~/.vim/colors
 cp ~/.dotfiles/.vim/colors/molokai.vim ~/.vim/colors/
