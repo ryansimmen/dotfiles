@@ -8,19 +8,14 @@ fi
 source "$HOME/.zi/bin/zi.zsh"
 autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
-# examples here -> https://wiki.zshell.dev/ecosystem/category/-annexes
-zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 # Plugins
 zi ice silent pick"history.zsh"
 zi snippet OMZ::lib/history.zsh
 
-zi wait lucid for \
-  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    z-shell/F-Sy-H \
-    z-shell/H-S-MW \
-  atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+zi light z-shell/F-Sy-H
+zi light z-shell/H-S-MW
+zi light zsh-users/zsh-autosuggestions
 
 zi ice pick"async.zsh" src"pure.zsh"
 zi light sindresorhus/pure
