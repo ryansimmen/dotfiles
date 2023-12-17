@@ -12,6 +12,11 @@ autoload -Uz _zi
 # Plugins
 zi snippet OMZ::lib/history.zsh
 
+zi wait lucid for \
+  OMZP::nvm \
+  OMZP::ssh-agent \
+  OMZP::rbenv
+
 zi light z-shell/F-Sy-H
 zi light z-shell/H-S-MW
 zi light zsh-users/zsh-autosuggestions
@@ -35,19 +40,12 @@ alias dockerclean="docker system prune -a"
 alias k="kubectl"
 alias t="transmission-cli -u 0 -w ~/downloads"
 
+if [ -f ~/token.sh ]; then
+  source ~/token.sh
+fi
+
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/ryansimmen/go/bin
-eval "$(rbenv init -)"
-
-# service docker status || sudo service docker start
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
-
-source ~/token.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH=$PATH:$HOME/go/bin
 
 export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
 export GOPRIVATE=
