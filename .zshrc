@@ -12,7 +12,7 @@ autoload -Uz _zi
 # Plugins
 zi snippet OMZ::lib/history.zsh
 
-zi wait lucid for \
+zi wait silent for \
   OMZP::nvm \
   OMZP::ssh-agent \
   OMZP::rbenv
