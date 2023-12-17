@@ -17,9 +17,13 @@ zi wait silent for \
   OMZP::ssh-agent \
   OMZP::rbenv
 
-zi light z-shell/F-Sy-H
 zi light z-shell/H-S-MW
-zi light zsh-users/zsh-autosuggestions
+
+zi wait lucid for \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    z-shell/F-Sy-H \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 zi ice pick"async.zsh" src"pure.zsh"
 zi light sindresorhus/pure
