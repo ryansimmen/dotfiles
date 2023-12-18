@@ -53,6 +53,14 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
 # Aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
+alias ll='ls -alF'
+alias la='ls -A'
+
 alias cls=clear
 alias gap="git add . && git commit --amend --no-edit && git push --force"
 alias dockerclean="docker system prune -a"
