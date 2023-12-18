@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# z-shell/zi
 if [[ ! -f $HOME/.zi/bin/zi.zsh ]]; then
   print -P "%F{33}▓▒░ %F{160}Installing (%F{33}z-shell/zi%F{160})…%f"
   command mkdir -p "$HOME/.zi" && command chmod go-rwX "$HOME/.zi"
@@ -42,14 +43,14 @@ zi wait lucid for \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
+# Fix comments
+setopt interactivecomments
+
 # Key Bindings
 [[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
-
-# Fix comments
-setopt interactivecomments
 
 # Aliases
 alias cls=clear
@@ -58,6 +59,7 @@ alias dockerclean="docker system prune -a"
 alias k="kubectl"
 alias t="transmission-cli -u 0 -w ~/downloads"
 
+# Exports
 if [ -f ~/token.sh ]; then
   source ~/token.sh
 fi
