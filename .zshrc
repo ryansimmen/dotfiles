@@ -24,6 +24,7 @@ fi
 
 # Plugins
 zi ice depth=1; zi light romkatv/powerlevel10k
+zi ice depth=1; zi light z-shell/H-S-MW
 
 zi for \
   OMZL::clipboard.zsh \
@@ -38,17 +39,17 @@ zi wait silent for \
   OMZP::rbenv \
   OMZP::ssh-agent
 
-zi light z-shell/H-S-MW
-
 zi wait lucid for \
-  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    z-shell/F-Sy-H \
   id-as"docker" has"docker" as"completion" \
     atclone="docker completion zsh > _docker" \
     atpull"%atclone" nocompile blockf z-shell/null \
   id-as"kubectl" has"kubectl" as"completion" \
     atclone="kubectl completion zsh > _kubectl" \
-    atpull"%atclone" nocompile blockf z-shell/null \
+    atpull"%atclone" nocompile blockf z-shell/null
+
+zi wait lucid for \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    z-shell/F-Sy-H \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
