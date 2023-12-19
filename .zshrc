@@ -25,13 +25,18 @@ fi
 # Plugins
 zi ice depth=1; zi light romkatv/powerlevel10k
 
-zi snippet OMZ::lib/history.zsh
+zi for \
+  OMZL::clipboard.zsh \
+  OMZL::history.zsh
 
 zi wait silent for \
+  OMZP::copybuffer \
+  OMZP::copyfile \
+  OMZP::copypath \
+  OMZP::dirhistory \
   OMZP::nvm \
-  OMZP::ssh-agent \
   OMZP::rbenv \
-  OMZP::dirhistory
+  OMZP::ssh-agent
 
 zi light z-shell/H-S-MW
 
