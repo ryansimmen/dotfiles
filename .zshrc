@@ -40,6 +40,9 @@ zi wait lucid for \
   id-as"kubectl" has"kubectl" as"completion" \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null \
+  id-as"docker/_docker" has"docker" as"completion" \
+    nocompile blockf is-snippet \
+    https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
