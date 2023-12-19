@@ -30,7 +30,8 @@ zi snippet OMZ::lib/history.zsh
 zi wait silent for \
   OMZP::nvm \
   OMZP::ssh-agent \
-  OMZP::rbenv
+  OMZP::rbenv \
+  OMZP::dirhistory
 
 zi light z-shell/H-S-MW
 
