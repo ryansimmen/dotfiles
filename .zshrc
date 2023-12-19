@@ -43,11 +43,12 @@ zi light z-shell/H-S-MW
 zi wait lucid for \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     z-shell/F-Sy-H \
+  id-as"docker" has"docker" as"completion" \
+    atclone="docker completion zsh > _docker" \
+    atpull"%atclone" nocompile blockf z-shell/null \
   id-as"kubectl" has"kubectl" as"completion" \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null \
-  has"docker" depth"1" as"completion" \
-    pick"contrib/completion/zsh/_docker" nocompile blockf docker/cli \
   atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions
 
