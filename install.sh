@@ -25,5 +25,5 @@ vim +'PlugInstall --sync' +qall
 # zsh 
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
     sudo apt install -y zsh
-    zsh
+    exec zsh -il
 fi;
