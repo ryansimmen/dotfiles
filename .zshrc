@@ -47,7 +47,7 @@ zi wait lucid for \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null
 
-zi wait lucid for \
+zi wait lucid depth=1 for \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     z-shell/F-Sy-H \
   atload"!_zsh_autosuggest_start" \
