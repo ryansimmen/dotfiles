@@ -24,7 +24,6 @@ fi
 
 # Plugins
 zi ice depth=1; zi light romkatv/powerlevel10k
-zi ice depth=1; zi light z-shell/H-S-MW
 
 zi for \
   OMZL::clipboard.zsh \
@@ -46,6 +45,10 @@ zi wait lucid for \
   id-as"kubectl" has"kubectl" as"completion" \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null
+
+zi wait lucid depth=1 for \
+  ael-code/zsh-colored-man-pages \
+  z-shell/H-S-MW
 
 zi wait lucid depth=1 for \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -82,6 +85,7 @@ if [ -f ~/token.sh ]; then
   source ~/token.sh
 fi
 
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 
