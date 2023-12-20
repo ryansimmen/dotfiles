@@ -38,7 +38,7 @@ zi wait silent for \
   OMZP::rbenv \
   OMZP::ssh-agent
 
-zi wait lucid for \
+zi wait lucid light-mode for \
   id-as"docker" has"docker" as"completion" \
     atclone="docker completion zsh > _docker" \
     atpull"%atclone" nocompile blockf z-shell/null \
@@ -46,11 +46,11 @@ zi wait lucid for \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null
 
-zi wait lucid depth=1 for \
+zi wait lucid depth=1 light-mode for \
   ael-code/zsh-colored-man-pages \
   z-shell/H-S-MW
 
-zi wait lucid depth=1 for \
+zi wait lucid depth=1 light-mode for \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     z-shell/F-Sy-H \
   atload"!_zsh_autosuggest_start" \
