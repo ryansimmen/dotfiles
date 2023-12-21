@@ -25,11 +25,12 @@ fi
 # Prompt
 zi ice depth=1; zi light romkatv/powerlevel10k
 
-# Libs
+# Lib Snippets
 zi for \
   OMZL::clipboard.zsh \
   OMZL::history.zsh
 
+# Plugin Snippets
 zi wait silent for \
   OMZP::copybuffer \
   OMZP::copyfile \
