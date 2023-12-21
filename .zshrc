@@ -39,9 +39,6 @@ zi wait silent for \
   OMZP::ssh-agent
 
 zi wait lucid light-mode for \
-  id-as"docker" has"docker" as"completion" \
-    atclone="docker completion zsh > _docker" \
-    atpull"%atclone" nocompile blockf z-shell/null \
   id-as"kubectl" has"kubectl" as"completion" \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null
