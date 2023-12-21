@@ -22,9 +22,10 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# Plugins
+# Prompt
 zi ice depth=1; zi light romkatv/powerlevel10k
 
+# Libs
 zi for \
   OMZL::clipboard.zsh \
   OMZL::history.zsh
@@ -38,11 +39,13 @@ zi wait silent for \
   OMZP::rbenv \
   OMZP::ssh-agent
 
+# Completions
 zi wait lucid light-mode for \
   id-as"kubectl" has"kubectl" as"completion" \
     atclone="kubectl completion zsh > _kubectl" \
     atpull"%atclone" nocompile blockf z-shell/null
 
+# Plugins
 zi wait lucid depth=1 light-mode for \
   ael-code/zsh-colored-man-pages \
   z-shell/H-S-MW
