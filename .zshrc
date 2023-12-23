@@ -61,10 +61,10 @@ zi wait lucid depth=1 light-mode for \
 setopt interactivecomments
 
 # Key Bindings
-[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
-[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
+bindkey "${key[Up]}" up-line-or-search
+bindkey "${key[Down]}" down-line-or-search
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # Aliases
 if [ -x /usr/bin/dircolors ]; then
