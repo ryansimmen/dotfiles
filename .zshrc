@@ -80,7 +80,7 @@ alias gap="git add . && git commit --amend --no-edit && git push --force"
 alias dockerclean="docker system prune -a"
 alias k="kubectl"
 alias t="transmission-cli -u 0 -w ~/downloads"
-alias gitclean='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s|^refs/remotes/origin/||") && git pull && git branch --format="%(refname:short)" | grep -v "^$(git branch --show-current)$" | xargs -r git branch -d'
+alias gbc='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s|^refs/remotes/origin/||") && git pull && git branch --format="%(refname:short)" | grep -v "^$(git branch --show-current)$" | xargs -r git branch -d'
 
 # Exports
 if [ -f ~/token.sh ]; then
