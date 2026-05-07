@@ -106,10 +106,12 @@ path=("$HOME/.istioctl/bin" "$BUN_INSTALL/bin" "/home/linuxbrew/.linuxbrew/opt/m
 path+=("$HOME/.dotnet/tools")
 path=("$HOME/.opencode/bin" $path)
 
-export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
+#export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://proxy.golang.org/,direct"
+export GOPROXY=https://goproxy.githubapp.com/mod,https://proxy.golang.org,direct
 export GOPRIVATE=
 export GONOPROXY=
 export GONOSUMDB='github.com/github/*'
+export GOAUTH='sh -c '\''printf "https://goproxy.githubapp.com\n\nAuthorization: Basic %s\n\n" "$(printf "nobody:%s" "$(gh auth token)" | base64 -w0)"'\'''
 
 export EDITOR=vi
 export MATO_BRANCH=ryansimmen/mato
