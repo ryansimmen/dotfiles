@@ -48,6 +48,13 @@ zi wait silent for \
 #     atclone="kubectl completion zsh > _kubectl" \
 #     atpull"%atclone" nocompile blockf z-shell/null
 
+if [[ -x "$HOME/go/bin/mato" ]]; then
+  zi wait lucid light-mode for \
+    id-as"mato" as"completion" \
+      atclone="$HOME/go/bin/mato completion zsh > _mato" \
+      atpull"%atclone" nocompile blockf z-shell/null
+fi
+
 # Plugins
 zi wait lucid depth=1 light-mode for \
   ael-code/zsh-colored-man-pages \
@@ -103,6 +110,11 @@ export GOPROXY="https://nobody:$GITHUB_TOKEN@goproxy.githubapp.com/mod,https://p
 export GOPRIVATE=
 export GONOPROXY=
 export GONOSUMDB='github.com/github/*'
+
+export EDITOR=vi
+export MATO_BRANCH=ryansimmen/mato
+
+#cd "$HOME/mato"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
